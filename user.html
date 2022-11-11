@@ -13,19 +13,25 @@
     <div class="container text-center ">
         <br>
         <br>
-        <form action="/action_page.php">
+        <form action="">
             <label for="bookName">書名:</label>
             <input type="text" id="bookName" name="bookName" placeholder="請輸入書名" size="40">
             
             <label for="author">作者:</label>
             <input type="text" id="author" name="author" placeholder="請輸入作者" size="40">
             
-            <label for="bookYear">年分:</label>
+            <label for="bookYear">年份:</label>
             <select id="bookYear" name="bookYear"></select>
             <input class="btn btn-primary" type="submit" value="查詢">
-        </form>        
+        </form>
+        <button class="btn btn-danger" onclick="showAllBooks()">fake data</button>
+        <br>
+        <br>
+        <div id="bookSearchResult"></div>
+        
+        
     </div>
-    <div class="bookSearchResult"></div>
+    
 
      <!--external javascript file-->
      <script src="./script/user.js"></script>
