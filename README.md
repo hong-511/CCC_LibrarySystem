@@ -7,6 +7,7 @@ a library system devoloped by three person who's family name start with C
 3. open browser and enter http://localhost/
 You should see the main page of the system
 
+The following steps refer to the old sql file, will be change in 11/14
 ### How to login as Administrator (might need to set your phpmyadmin to no password)
 1. upload the sql file in database folder to phpmyadmin
 2. in phpmyadmin, add a database called final_project (db_connect.php line 5 dbname=final_project)
