@@ -9,8 +9,8 @@ You should see the main page of the system
 
 The following steps refer to the old sql file, will be change in 11/14
 ### How to login as Administrator (might need to set your phpmyadmin to no password)
-1. upload the sql file in database folder to phpmyadmin
-2. in phpmyadmin, add a database called final_project (db_connect.php line 5 dbname=final_project)
+1. in phpmyadmin, add a database called final_project (db_connect.php line 5 dbname=final_project)
+2. upload the sql file (located under database folder) into final_project database in phpmyadmin
 3. in final_project, add a relation called administer (adminIn.php line 12)
 4. in administer, set Administer_ID and Password two attribute (adminIn.php line 12)
 5. in administer, set your own Administer_ID and Password
