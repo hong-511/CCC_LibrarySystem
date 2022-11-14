@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-11-03 14:09:12
+-- 產生時間： 2022-11-12 19:58:17
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.6
 
@@ -24,16 +24,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `administer`
+--
+
+CREATE TABLE `administer` (
+  `Administer_ID` varchar(13) NOT NULL,
+  `name` varchar(10) DEFAULT NULL,
+  `Password` varchar(8) DEFAULT NULL,
+  `email` varchar(12) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `administer`
+--
+
+INSERT INTO `administer` (`Administer_ID`, `name`, `Password`, `email`, `phone`) VALUES
+('1', 'TY', '1234', 'TY@email.com', '987654321'),
+('2', 'YH', '1234', 'YH@email.com', '987654321'),
+('3', 'PH', '1234', 'PH@email.com', '987654321');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `book`
 --
 
 CREATE TABLE `book` (
-  `Book_ID` varchar(7) NOT NULL,
+  `Book_ID` varchar(100) NOT NULL,
   `BookName` varchar(122) DEFAULT NULL,
   `Author` varchar(34) DEFAULT NULL,
   `Status` varchar(9) DEFAULT NULL,
-  `Year` varchar(4) DEFAULT NULL,
-  `Price` varchar(5) DEFAULT NULL
+  `Year` varchar(10) DEFAULT NULL,
+  `Price` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -602,7 +625,8 @@ INSERT INTO `book` (`Book_ID`, `BookName`, `Author`, `Status`, `Year`, `Price`) 
 CREATE TABLE `process` (
   `Process_ID` varchar(10) NOT NULL,
   `Reader_ID` varchar(9) DEFAULT NULL,
-  `Book_ID` varchar(7) DEFAULT NULL,
+  `Book_ID` varchar(10) DEFAULT NULL,
+  `Administer_ID` varchar(100) NOT NULL,
   `Date` varchar(10) DEFAULT NULL,
   `Type` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -611,16 +635,13 @@ CREATE TABLE `process` (
 -- 傾印資料表的資料 `process`
 --
 
-INSERT INTO `process` (`Process_ID`, `Reader_ID`, `Book_ID`, `Date`, `Type`) VALUES
-('1', '2', '100', '2022/9/30', 'borrow'),
-('2', '2', '200', '2022/10/1', 'borrow'),
-('3', '3', '300', '2022/10/3', 'borrow'),
-('4', '1', '551', '2022/10/4', 'borrow'),
-('5', '2', '100', '2022/10/7', 'return'),
-('6', '2', '200', '2022/10/7', 'return'),
-('7', '3', '300', '2022/10/5', 'lost'),
-('8', '1', '551', '2022/10/11', 'postponed'),
-('9', '1', '551', '2022/10/19', 'delayed');
+INSERT INTO `process` (`Process_ID`, `Reader_ID`, `Book_ID`, `Administer_ID`, `Date`, `Type`) VALUES
+('1', '2', '100', '1', '2022/9/30', 'borrow'),
+('2', '2', '200', '1', '2022/10/1', 'borrow'),
+('3', '3', '300', '1', '2022/10/3', 'borrow'),
+('4', '1', '550', '2', '2022/10/4', 'borrow'),
+('5', '2', '100', '3', '2022/10/7', 'return'),
+('6', '2', '200', '2', '2022/10/7', 'return');
 
 -- --------------------------------------------------------
 
@@ -631,24 +652,32 @@ INSERT INTO `process` (`Process_ID`, `Reader_ID`, `Book_ID`, `Date`, `Type`) VAL
 CREATE TABLE `reader` (
   `Reader_ID` varchar(9) NOT NULL,
   `Name` varchar(7) DEFAULT NULL,
-  `Password` varchar(8) DEFAULT NULL
+  `Password` varchar(8) DEFAULT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `reader`
 --
 
-INSERT INTO `reader` (`Reader_ID`, `Name`, `Password`) VALUES
-('1', 'TY', '1234'),
-('2', 'Horford', '2330'),
-('3', 'IronMan', '3000'),
-('4', 'Leonard', '4321'),
-('5', 'Jessy', '5678'),
-('6', 'Sherry', '8765');
+INSERT INTO `reader` (`Reader_ID`, `Name`, `Password`, `email`, `phone`) VALUES
+('1', 'TY', '1234', '', ''),
+('2', 'Horford', '2330', '', ''),
+('3', 'IronMan', '3000', '', ''),
+('4', 'Leonard', '4321', '', ''),
+('5', 'Jessy', '5678', '', ''),
+('6', 'Sherry', '8765', '', '');
 
 --
 -- 已傾印資料表的索引
 --
+
+--
+-- 資料表索引 `administer`
+--
+ALTER TABLE `administer`
+  ADD PRIMARY KEY (`Administer_ID`);
 
 --
 -- 資料表索引 `book`
@@ -662,7 +691,8 @@ ALTER TABLE `book`
 ALTER TABLE `process`
   ADD PRIMARY KEY (`Process_ID`),
   ADD KEY `Reader_ID` (`Reader_ID`) USING BTREE,
-  ADD KEY `Book_ID` (`Book_ID`) USING BTREE;
+  ADD KEY `Book_ID` (`Book_ID`) USING BTREE,
+  ADD KEY `Administer_ID` (`Administer_ID`);
 
 --
 -- 資料表索引 `reader`
@@ -679,7 +709,8 @@ ALTER TABLE `reader`
 --
 ALTER TABLE `process`
   ADD CONSTRAINT `process_ibfk_1` FOREIGN KEY (`Reader_ID`) REFERENCES `reader` (`Reader_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `process_ibfk_2` FOREIGN KEY (`Book_ID`) REFERENCES `book` (`Book_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `process_ibfk_2` FOREIGN KEY (`Book_ID`) REFERENCES `book` (`Book_ID`),
+  ADD CONSTRAINT `process_ibfk_3` FOREIGN KEY (`Administer_ID`) REFERENCES `administer` (`Administer_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
