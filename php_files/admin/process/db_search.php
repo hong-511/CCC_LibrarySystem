@@ -124,7 +124,7 @@
                 echo"<td>".$result[$i]['Status']."</td>";
                 echo"<td>".$result[$i]['Year']."</td>";
                 echo"<td>".$result[$i]['Price']."</td>";
-                echo"</tr>.";
+                echo"</tr>";
             }
             echo"</table>";
         }
