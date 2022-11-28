@@ -20,7 +20,14 @@
         </div><br/>
         <!-- submit -->
         <div>
-            <input type="submit" value="Send">
+            <input type="submit" value="Send"><br/><br/>
+        </div>
+    </form>
+
+    <form  action=modifyPasswordPage.php method="post">
+        <div>
+            <label><font size="3"> <strong>Forget the password?</strong> </font></label><br/>
+            <input type="submit" value="Modify">
         </div>
     </form>
 	</body>	
