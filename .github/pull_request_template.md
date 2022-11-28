@@ -11,8 +11,19 @@ Please put an `x` in the box that applies
 
 ## Description
 **Describe what the change is**
-You don't need to explain HOW you change the code, just shortly describe what's different
+You don't need to explain HOW you change the code. Your code, including comments in the code should explicitly
+self-describe enough about how you change the code.
+
+## Expected behavior
+A clear and concise description of what you expected to happen.
 
 ## Related Issue
 If applicable, refernce to the issue related to this pull request.
-type close#n to relate to the current issue, where n stands for the number of the issue
+
+## More Information
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Additional context**
+Add any other context about the problem here. You may also want to refer
+to [how to wirte the perfect pull request](https://github.blog/2015-01-21-how-to-write-the-perfect-pull-request/)
