@@ -26,6 +26,30 @@
             <label><font size="3"> <strong>Author :</strong> </font></label>
             <input type="text" name="Author"><br/>
         </div><br/>
+        <div>
+            <label><font size="3"> <strong>Status :</strong> </font></label>
+            <select name="Status">
+                <option value = unknown> unknown</option>
+                <option value = "available">available</option>
+                <option value = "issued">issued</option>
+            </select>
+        </div><br/>
+        
+        <div>
+            <label><font size="3"> <strong>Year :</strong> </font></label>
+            <select name="Year">
+                <option value = unknown> unknown</option>
+                <?php     
+                    for($i=2009; $i<2023; $i++)
+                        echo"<option value = ".$i.">".$i."</option>";
+                ?>
+            </select>
+        </div><br/>
+
+        <div>
+            <label><font size="3"> <strong>Price :</strong> </font></label>
+            <input type="text" name="Price"><br/>
+        </div><br/>
         <!-- submit -->
         <div>
             <input type="submit" value="Search">
