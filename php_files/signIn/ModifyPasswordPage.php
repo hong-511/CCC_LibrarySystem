@@ -24,6 +24,11 @@
             <label><font size="3"> <strong>NewPassword :</strong> </font></label>
             <input type="password" name="NewPassword" />
         </div><br/> 
+
+        <div>
+            <label><font size="3"> <strong>check NewPassword :</strong> </font></label>
+            <input type="password" name="checkedNewPassword" />
+        </div><br/> 
         <!-- submit -->
         <div>
             <input type="submit" value="Modify"><br/><br/>

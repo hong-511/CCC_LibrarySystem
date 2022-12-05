@@ -6,18 +6,22 @@
     $Reader_ID = $_POST["Reader_ID"];
     $Name = $_POST["UserName"];
     $Password = $_POST["NewPassword"];
+    $checkedPassword = $_POST["checkedNewPassword"];
+
     if($Reader_ID == NULL)  
         header("Location:modifyPasswordPage.php"); 
     if($Name == NULL)
         header("Location:modifyPasswordPage.php");
     if($Password == NULL)
         header("Location:modifyPasswordPage.php");
+    if($checkedPassword != $Password)
+        header("Location:modifyPasswordPage.php");
     
     $query = ("select * from reader where Reader_ID=? and Name=?");
     $stmt= $db->prepare($query);//執行SQL語法
     $stmt->execute(array($Reader_ID, $Name));
     $result = $stmt->fetchAll();
-    if($result != NULL)
+    if($result != NULL && $checkedPassword == $Password)
         {
             $query = ("update reader set Password=?
                        where Reader_ID=? and Name=?");
