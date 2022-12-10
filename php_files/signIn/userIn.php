@@ -17,7 +17,21 @@
         $result = $stmt->fetchAll();
         if($result != NULL){
             $_SESSION['Reader_ID'] = $Reader_ID;
-            //$_SESSION['Name'] = $result[0]['Name'];
+            /*initial user page*/
+            $_SESSION['PageType'] = 0;
+            $_SESSION['DidSearch'] = false;
+            /**count available books max Page**/
+            $query = ("select count(*) as number from book  where Status = 'available'");
+            $stmt= $db->prepare($query);//執行SQL語法
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $_SESSION['AvailableMaxPage'] = $result[0]['number']/20 + 1;//count max page
+            /**count all books max Page**/
+            $query = ("select count(*) as number from book");
+            $stmt= $db->prepare($query);//執行SQL語法
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $_SESSION['MaxPage'] = $result[0]['number']/20 + 1;//count max page
             header("Location:userPage.php");
         }
         else{
