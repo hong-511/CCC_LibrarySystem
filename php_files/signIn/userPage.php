@@ -59,11 +59,11 @@
             $Reader_ID = $_SESSION['Reader_ID'];   
             $Date = date("Y/m/d");;
             $Type = "borrow";
-
-            $query = ("insert into process values(?,?,?,?,?)");
+            $Administer_ID = 1;
+            $query = ("insert into process values(?,?,?,?,?,?)");
             $stmt= $db->prepare($query);//執行SQL語法
             foreach($borrowIDlist as $Book_ID){
-                $result = $stmt->execute(array($Process_ID++,$Reader_ID,$Book_ID,$Date,$Type));
+                $result = $stmt->execute(array($Process_ID++,$Reader_ID,$Book_ID,$Administer_ID,$Date,$Type));
             }
             echo "Borrowing is successful<br/>";
         }
@@ -195,11 +195,11 @@
             $Reader_ID = $_SESSION['Reader_ID'];   
             $Date = date("Y/m/d");;
             $Type = "return";
-
-            $query = ("insert into process values(?,?,?,?,?)");
+            $Administer_ID = 1;
+            $query = ("insert into process values(?,?,?,?,?,?)");
             $stmt= $db->prepare($query);//執行SQL語法
             foreach($returnIDlist as $Book_ID){
-                $result = $stmt->execute(array($Process_ID++,$Reader_ID,$Book_ID,$Date,$Type));
+                $result = $stmt->execute(array($Process_ID++,$Reader_ID,$Book_ID,$Administer_ID,$Date,$Type));
             }
             echo "Returning is successful<br/>";
         }
@@ -235,7 +235,7 @@
             }   
             echo"</table>"; 
         echo"<div>  
-            <input type='submit' name='return' value='Return'>
+            <input type='submit' name='return' value='Return Book'>
         </div>
         </form>";
     }
