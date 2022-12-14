@@ -1,172 +1,24 @@
 <html>
 	<head>
 		<title> Database System Admin Page </title>
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 	</head>
 	
-	<body>	
-        <h1>Admin Page</h1>	
-    <p> By <font size="5"> <strong> CCC team </strong> </font></p>
-    <hr>
-    <!-- search -->
-    <form  action=/admin/process/db_search.php method="post">
-        <?php
-            echo "This is for search.<br/>";
-        ?>
-        <div>
-            <label><font size="3"> <strong>Book_ID :</strong> </font></label>
-            <input type="text" name="Book_ID" />
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>BookName :</strong> </font></label>
-            <input type="text" name="BookName"><br/>
-        </div><br/>
-
-        <div>
-            <label><font size="3"> <strong>Author :</strong> </font></label>
-            <input type="text" name="Author"><br/>
-        </div><br/>
-        <div>
-            <label><font size="3"> <strong>Status :</strong> </font></label>
-            <select name="Status">
-                <option value = unknown> unknown</option>
-                <option value = "available">available</option>
-                <option value = "issued">issued</option>
-            </select>
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>Year :</strong> </font></label>
-            <select name="Year">
-                <option value = unknown> unknown</option>
-                <?php     
-                    for($i=2009; $i<2023; $i++)
-                        echo"<option value = ".$i.">".$i."</option>";
-                ?>
-            </select>
-        </div><br/>
-
-        <div>
-            <label><font size="3"> <strong>Price :</strong> </font></label>
-            <input type="text" name="Price"><br/>
-        </div><br/>
-        <!-- submit -->
-        <div>
-            <input type="submit" value="Search">
+	<body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary" onclick="loadSearchForm('search')">search</button>
+                    <button class="btn btn-primary" onclick="loadSearchForm('insert')">insert</button>
+                    <button class="btn btn-primary" onclick="loadSearchForm('update')">update</button>
+                    <button class="btn btn-primary" onclick="loadSearchForm('delete')">delete</button>
+                </div>
+            </div>
+            <div id="formBlock"></div>
         </div>
-    </form>
-    <hr>
-    <!-- Insert -->
-    <form  action=/admin/process/db_insert.php method="post">
-        <?php
-            echo "This is for insert.<br/>";
-        ?>
-        <div>
-            <label><font size="3"> <strong>Book_ID :</strong> </font></label>
-            <input type="text" name="Book_ID" />
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>BookName :</strong> </font></label>
-            <input type="text" name="BookName"><br/>
-        </div><br/>
-
-        <div>
-            <label><font size="3"> <strong>Author :</strong> </font></label>
-            <input type="text" name="Author"><br/>
-        </div><br/>
-        <div>
-            <label><font size="3"> <strong>Status :</strong> </font></label>
-            <select name="Status">
-                <option value = "available">available</option>
-                <option value = "issued">issued</option>
-            </select>
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>Year :</strong> </font></label>
-            <select name="Year">
-                <?php     
-                    for($i=2009; $i<2023; $i++)
-                        echo"<option value = ".$i.">".$i."</option>";
-                ?>
-            </select>
-        </div><br/>
-
-        <div>
-            <label><font size="3"> <strong>Price :</strong> </font></label>
-            <input type="text" name="Price"><br/>
-        </div><br/>
-        <!-- submit -->
-        <div>
-            <input type="submit" value="Insert">
-        </div>
-    </form>
-    <hr>
-    <!-- Update -->
-    <form  action=/admin/process/db_update.php method="post">
-        
-        <?php
-            echo "This is for update.<br/>";
-        ?>
-                <div>
-            <label><font size="3"> <strong>Book_ID :</strong> </font></label>
-            <input type="text" name="Book_ID" />
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>BookName :</strong> </font></label>
-            <input type="text" name="BookName"><br/>
-        </div><br/>
-
-        <div>
-            <label><font size="3"> <strong>Author :</strong> </font></label>
-            <input type="text" name="Author"><br/>
-        </div><br/>
-        <div>
-            <label><font size="3"> <strong>Status :</strong> </font></label>
-            <select name="Status">
-                <option value = "available">available</option>
-                <option value = "issued">issued</option>
-            </select>
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>Year :</strong> </font></label>
-            <select name="Year">
-                <?php     
-                    for($i=2009; $i<2023; $i++)
-                        echo"<option value = ".$i.">".$i."</option>";
-                ?>
-            </select>
-        </div><br/>
-
-        <div>
-            <label><font size="3"> <strong>Price :</strong> </font></label>
-            <input type="text" name="Price"><br/>
-        </div><br/>
-        <!-- submit -->
-        <div>
-            <input type="submit" value="Update">
-        </div>
-    </form>
-    <hr>
-    <!-- Delete -->
-    <form  action=/admin/process/db_delete.php method="post">
-        
-        <?php
-            echo "This is for delete.<br/>";
-        ?>
-        <div>
-            <label><font size="3"> <strong>Book_ID :</strong> </font></label>
-            <input type="text" name="Book_ID" />
-        </div><br/>
-        <!-- submit -->
-        <div>
-            <input type="submit" value="Delete">
-        </div>
-    </form>
-    <hr>
+        <h1>Admin Page</h1>
     <!-- change page -->
     <form  action=adminPage.php method="get">
         <div>
@@ -224,8 +76,10 @@
             echo"<td>".$result[$i+($page-1)*20]['Status']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Year']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Price']."</td>";
-            echo"</tr>";
+            echo"</tr>.";
         }
     ?>
+        <script src="../script/form.js"></script>
+        <script src="../script/admin.js"></script>
 	</body>	
 </html>

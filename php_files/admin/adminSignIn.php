@@ -1,27 +1,26 @@
 <html>
 	<head>
-		<title> Admin Sign In Page </title>
+		<title> Admin Sign In</title>
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 	</head>
 	
-	<body>	
-        <h1>Admin Sign In</h1>	
-    <!--<p> By <font size="5"> <strong> CCC team </strong> </font></p>-->
-    <hr>
-    <!-- Sign In -->
-    <form  action=adminIn.php method="post">
-        <div>
-            <label><font size="3"> <strong>ID :</strong> </font></label>
-            <input type="text" name="id" />
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>Password :</strong> </font></label>
-            <input type="password" name="password"><br/>
-        </div><br/>
-        <!-- submit -->
-        <div>
-            <input type="submit" value="Send">
+	<body onload="loadAdminLoginForm()">	
+        	
+        <div class="container">
+            <div class="row mb-5 mt-3">
+                <div class="col"></div>
+                <div class="col">
+                    <h1>Admin Sign In</h1>
+                </div>
+                <div class="col"></div>
+            </div>
+            <br>
+            <!--Sign In -->
+            <form  action=adminIn.php method="post"  id="loginForm"></form>
         </div>
-    </form>
+        <script src="../script/form.js"></script>
+        <script src="../script/admin.js"></script>
 	</body>	
 </html>
