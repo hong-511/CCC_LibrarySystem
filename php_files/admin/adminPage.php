@@ -224,7 +224,7 @@
             echo"<td>".$result[$i+($page-1)*20]['Status']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Year']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Price']."</td>";
-            echo"</tr>.";
+            echo"</tr>";
         }
     ?>
 	</body>	
