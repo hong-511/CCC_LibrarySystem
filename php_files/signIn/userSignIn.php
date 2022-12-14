@@ -7,9 +7,20 @@
 	</head>
 	
 	<body onload="loadUserLoginForm()">
-        <h1>User Sign In</h1>
-    <!-- Sign In -->
-    <form  action=userIn.php method="post" id="loginForm"></form>
+        <div class="container">
+            <div class="row mb-5 mt-3">
+                <div class="col"></div>
+                <div class="col">
+                    <h1>User Sign In</h1>
+                </div>
+                <div class="col"></div>
+            </div>
+            <br>
+            <!-- Sign In -->
+            <form  action=userIn.php method="post" id="loginForm"></form>
+        </div>
+        
+    
 
     <form  action=modifyPasswordPage.php method="post">
         <div>
