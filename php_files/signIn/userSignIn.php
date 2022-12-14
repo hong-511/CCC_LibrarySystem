@@ -1,28 +1,15 @@
 <html>
 	<head>
 		<title> Sign In Page </title>
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 	</head>
 	
-	<body>	
-        <h1>User Sign In</h1>	
-    <!--<p> By <font size="5"> <strong> CCC team </strong> </font></p>-->
-    <hr>
+	<body onload="loadUserLoginForm()">
+        <h1>User Sign In</h1>
     <!-- Sign In -->
-    <form  action=userIn.php method="post">
-        <div>
-            <label><font size="3"> <strong>ID :</strong> </font></label>
-            <input type="text" name="Reader_ID" />
-        </div><br/>
-        
-        <div>
-            <label><font size="3"> <strong>Password :</strong> </font></label>
-            <input type="password" name="Password"><br/>
-        </div><br/>
-        <!-- submit -->
-        <div>
-            <input type="submit" value="Send"><br/><br/>
-        </div>
-    </form>
+    <form  action=userIn.php method="post" id="loginForm"></form>
 
     <form  action=modifyPasswordPage.php method="post">
         <div>
@@ -30,5 +17,7 @@
             <input type="submit" value="Modify">
         </div>
     </form>
+    <script src="../script/form.js"></script>
+    <script src="../script/user.js"></script>
 	</body>	
 </html>
