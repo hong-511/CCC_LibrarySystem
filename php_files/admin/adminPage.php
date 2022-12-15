@@ -10,10 +10,10 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary" onclick="loadSearchForm('search')">search</button>
-                    <button class="btn btn-primary" onclick="loadSearchForm('insert')">insert</button>
-                    <button class="btn btn-primary" onclick="loadSearchForm('update')">update</button>
-                    <button class="btn btn-primary" onclick="loadSearchForm('delete')">delete</button>
+                    <button class="btn btn-primary" onclick="loadCRUDForm('search')">search</button>
+                    <button class="btn btn-primary" onclick="loadCRUDForm('insert')">insert</button>
+                    <button class="btn btn-primary" onclick="loadCRUDForm('update')">update</button>
+                    <button class="btn btn-primary" onclick="loadCRUDForm('delete')">delete</button>
                 </div>
             </div>
             <div id="formBlock"></div>

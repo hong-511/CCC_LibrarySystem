@@ -10,7 +10,7 @@ function loadAdminLoginForm() {
     loginForm.innerHTML = wholeForm;
   }
 }
-function loadSearchForm(action) {
+function loadCRUDForm(action) {
   let formBlock = document.getElementById("formBlock");
   let formHeadTag =
       "<form  action=/admin/process/db_" + action + ".php method='post'>";
@@ -39,4 +39,8 @@ function loadSearchForm(action) {
     formContent = input_Book_ID + submitBtn;
     formBlock.innerHTML = formHeadTag + formContent + formTailTag;
   }
+}
+
+function searchBooks(){
+
 }
