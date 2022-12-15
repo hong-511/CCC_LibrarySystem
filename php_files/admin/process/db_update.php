@@ -1,5 +1,4 @@
 <?php	
-    //echo "Hi! This is db_action.php file.<br/> ";
     include_once "../../db_connect.php";//設定想要新增入資料庫的資料內容如下
 	
 	//使用預處理寫法是為了防止「sql injection」
@@ -16,5 +15,7 @@
                 where Book_ID=?");
 	$stmt= $db->prepare($query);//執行SQL語法
 	$result = $stmt->execute(array($BookName,$Author,$Status,$Year,$Price,$Book_ID));
-    header("Location:../adminPage.php");
+    
+    echo "finish update";
+    //TODO:check if update succeed and search for the update book
 ?>

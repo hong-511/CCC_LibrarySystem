@@ -8,6 +8,7 @@
 	
 	<body>
         <div class="container">
+            <h1>Admin Page</h1>
             <div class="row">
                 <div class="col">
                     <button class="btn btn-primary" onclick="loadCRUDForm('search')">search</button>
@@ -18,7 +19,7 @@
             </div>
             <div id="formBlock"></div>
         </div>
-        <h1>Admin Page</h1>
+        
     <!-- change page -->
     <form  action=adminPage.php method="get">
         <div>

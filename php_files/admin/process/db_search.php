@@ -131,6 +131,4 @@
         else
             echo"NO result<br/>";
     }
-    
-    echo"<br/><input type = 'button' onclick='history.back()' value = 'Go Back'></input>";
 ?>
