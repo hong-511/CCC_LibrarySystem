@@ -17,8 +17,7 @@ function loadCRUDForm(action) {
        "<form id='" + action + "-form'>";
   let formContent ="";
   let formTailTag = "</form>";
-  let submitBtn_text = `<button class="btn btn-primary" onclick="CRUD('`+action+`')" >`+action+"</button>";
-  let submitBtn = centerElement(submitBtn_text);
+  let submitBtn=`<button class="btn btn-primary" onclick="CRUD('`+action+`')" >`+action+"</button>";
   let resultBlock = "<div id='result'></div>";
   if(action == "search" || action =="insert" || action == "update"){
     let input_Book_ID = createInput("Book_ID", "text", "Book_ID");
