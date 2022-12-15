@@ -50,7 +50,7 @@
         else
             $page = $_GET["pageNumber"];
         echo"Now Page : $page<br/>";
-        echo"<table border='5'>
+        echo"<table class='table table-striped table-hover'>
         <tr>
             <th>Book_ID</th>
             <th>BookName</th>
@@ -76,7 +76,7 @@
             echo"<td>".$result[$i+($page-1)*20]['Status']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Year']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Price']."</td>";
-            echo"</tr>.";
+            echo"</tr>";
         }
     ?>
         <script src="../script/form.js"></script>
