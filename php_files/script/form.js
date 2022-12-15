@@ -1,24 +1,14 @@
 function createInput(label, inputType, inputName) {
   let inputBlock =
     `<div class="row mb-3">
-            <div class="col"></div>
-            <div class="col-1">` +
-    "<label for='" +
-    inputName +
-    "'>" +
-    label +
-    ":</label>" +
-    `</div>
-            <div class="col-3">` +
-    "<input type='" +
-    inputType +
-    "' name='" +
-    inputName +
-    "' id='" +
-    inputName +
-    "'/>" +
-    `</div>
-            <div class="col"></div>
+        <div class="col"></div>
+        <div class="col-1">` +
+          "<label for='" + inputName + "'>" + label + ":</label>" +
+        `</div>
+        <div class="col-3">` + 
+          "<input type='" + inputType + "' name='" + inputName + "' id='" + inputName + "'/>" +
+        `</div>
+        <div class="col"></div>
       </div>`;
   return inputBlock;
 }

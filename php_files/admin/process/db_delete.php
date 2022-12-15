@@ -1,5 +1,4 @@
 <?php	
-    //echo "Hi! This is db_action.php file.<br/> ";
     include_once "../../db_connect.php";
 	
 	//使用預處理寫法是為了防止「sql injection」
@@ -10,5 +9,7 @@
 	$query = ("delete from book where Book_ID=?");
 	$stmt= $db->prepare($query);//執行SQL語法
 	$result = $stmt->execute(array($Book_ID));
-    header("Location:../adminPage.php");
+
+    echo "finish delete";
+    //TODO:check if delete succeed and return delete succeed
 ?>
