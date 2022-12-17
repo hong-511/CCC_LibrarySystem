@@ -1,4 +1,3 @@
-<!-- sign in -->
 <html>
 	<head>
 		<title> Database System User Page </title>
