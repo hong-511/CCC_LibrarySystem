@@ -14,8 +14,10 @@
         header("Location:modifyPasswordPage.php");
     if($Password == NULL)
         header("Location:modifyPasswordPage.php");
-    if($checkedPassword != $Password)
-        header("Location:modifyPasswordPage.php");
+    if($checkedPassword != $Password){
+        echo "the Password typed was wrong!<br/>";
+    }
+        
     
     $query = ("select * from reader where Reader_ID=? and Name=?");
     $stmt= $db->prepare($query);//執行SQL語法
@@ -29,7 +31,7 @@
 	        $result = $stmt->execute(array($Password, $Reader_ID, $Name));
             header("Location:userSignIn.php");
         }
-    else if($Reader_ID == NULL & $Name == NULL & $Password == NULL){
+    else if($Reader_ID == NULL & $Name == NULL & $Password == NULL & $checkedPassword == NULL){
         header("Location:../signUp/userSignUp.php");
     }
        
