@@ -23,6 +23,34 @@ function centerElement(elementHTML){
   </div>`;
   return result;
 }
+function alignLeftElement(elementHTML) {
+  let result =
+    `
+  <div class="row mb-3">
+        <div class="col-10"></div>
+        <div class="col">
+            ` +
+    elementHTML +
+    `
+        </div>
+  </div>`;
+  return result;
+}
+
+function centerForm(elementHTML) {
+  let result =
+    `
+  <div class="row mb-3">
+        <div class="col-1"></div>
+        <div class="col">
+            ` +
+    elementHTML +
+    `
+        </div>
+        <div class="col-1"></div>
+  </div>`;
+  return result;
+}
 
 function createSubmitButton(buttonName) {
   let submitTag =`
