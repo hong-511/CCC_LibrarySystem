@@ -29,7 +29,7 @@
     $result = $stmt->fetchAll();
     if($result != NULL)
         echo"This user Exist!!!<br/>";
-    else if(Password1 != NULL && Password2 != NULL && $Name != NULL){
+    else if($Password1 != NULL && $Password2 != NULL && $Name != NULL){
         //設定要使用的SQL指令
         $query = ("insert into reader values(?,?,?,?,?)");
         $stmt= $db->prepare($query);//執行SQL語法
