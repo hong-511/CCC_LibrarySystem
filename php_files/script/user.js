@@ -10,19 +10,83 @@ function loadUserLoginForm() {
     loginForm.innerHTML = wholeForm;
   }
 }
+
+function getNextReaderID() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/signUp/nextReaderID.php");
+
+  //parameter is empty because there is no form
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      console.log("nextid: " + response);
+      let input_id = document.getElementById("Reader_ID");
+      input_id.setAttribute("value",response);
+    }
+  };
+}
+
 function loadRegisterForm() {
-  let input_ID = createInput("ID", "text", "Reader_ID");
+  let formHeadTag = "<form  id='registerForm'>";
+  let input_ID = createReadonlyInput("ID", "text", "Reader_ID", "fetching...");
   let input_name = createInput("Name", "text", "Name");
+  let input_email = createInput("email", "text", "email");
+  let input_phone = createInput("phone", "text", "phone");
   let input_pwd_1 = createInput("Password", "password", "Password1");
   let input_pwd_2 = createInput("check Password", "password", "Password2");
-  let submitBtn = createSubmitButton("Send");
-  let wholeForm = input_ID + input_name + input_pwd_1 + input_pwd_2 + submitBtn;
-  let loginForm = document.getElementById("registerForm");
-  if (loginForm == null) {
+  let formTailTag = "</form>";
+
+  let btnHTML = `<button class="btn btn-warning" onclick="registerUser()">Send</button>`;
+  let submitBtn = centerElement(btnHTML);
+  let wholeForm =
+    formHeadTag +
+    input_ID +
+    input_name +
+    input_email +
+    input_phone +
+    input_pwd_1 +
+    input_pwd_2 +
+    formTailTag +
+    submitBtn;
+  let registerFormBlock = document.getElementById("registerFormBlock");
+  if (registerFormBlock == null) {
     console.log("form not found");
   } else {
-    loginForm.innerHTML = wholeForm;
+    registerFormBlock.innerHTML = wholeForm;
   }
+  getNextReaderID();
+}
+
+function registerUser() {
+  console.log("register user");
+  var form = document.getElementById("registerForm");
+  var data = new FormData(form);
+  if (form) {
+    console.log(form.elements);
+  } else {
+    console.log("register form not found");
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/signUp/addReader.php");
+
+  //send the form data
+  xhr.send(data);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      //reset form after AJAX success.
+      form.reset();
+      let response = this.responseText;
+      console.log("borrow response: " + response);
+      if (response == "Register succeed") {
+        alert("Register success");
+        location.replace("/signIn/userSignIn.php");
+      }
+    }
+  };
 }
 
 function loadSearchForm() {

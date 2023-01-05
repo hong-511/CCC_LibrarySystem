@@ -22,6 +22,32 @@ function createInput(label, inputType, inputName) {
       </div>`;
   return inputBlock;
 }
+function createReadonlyInput(label, inputType, inputName,value) {
+  let inputBlock =
+    `<div class="row mb-3">
+        <div class="col"></div>
+        <div class="col-2">` +
+    "<label for='" +
+    inputName +
+    "'>" +
+    label +
+    ":</label>" +
+    `</div>
+        <div class="col-3">` +
+    "<input type='" +
+    inputType +
+    "' name='" +
+    inputName +
+    "' id='" +
+    inputName +
+    "' value='" +
+    value +
+    "' readonly />" +
+    `</div>
+        <div class="col"></div>
+      </div>`;
+  return inputBlock;
+}
 function centerElement(elementHTML) {
   let result =
     `

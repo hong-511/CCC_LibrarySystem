@@ -7,6 +7,7 @@
 	</head>
 	
 	<body onload="loadRegisterForm()">
+        <!--Navbar-->
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
             <div class="container-fluid">
                 <div class="col-3">
@@ -42,8 +43,8 @@
                 <div class="col"></div>
             </div>
             <br>
-            <!-- Sign In -->
-            <form  action=addReader.php method="post" id="registerForm"></form>
+            <!-- Sign Up -->
+            <div id ="registerFormBlock"></div>
         </div>
         
     
