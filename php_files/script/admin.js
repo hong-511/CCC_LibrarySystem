@@ -64,9 +64,9 @@ function CRUD(action){
   xhr.onreadystatechange = function() {
       if (xhr.readyState == XMLHttpRequest.DONE) {
           //reset form after AJAX success.
-          form.reset(); 
-          let respone=this.responseText;
-          document.getElementById("result").innerHTML=respone;
+          //form.reset(); 
+          let response=this.responseText;
+          document.getElementById("result").innerHTML = centerForm(response);
       }
   }
 

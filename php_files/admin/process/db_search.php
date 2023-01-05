@@ -106,7 +106,7 @@
         }
         $result = $stmt->fetchAll();
         if($result != NULL){
-            echo"<table border='1'>
+            echo"<table class='table table-striped table-hover'>
                 <tr>
                     <th>Book_ID</th>
                     <th>BookName</th>

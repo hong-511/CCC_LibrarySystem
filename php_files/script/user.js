@@ -294,3 +294,18 @@ function returnBooks() {
     }
   };
 }
+
+function displayActivityHistory() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/signIn/user_process/history.php");
+
+  //parameter is empty because there is no form
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      document.getElementById("result").innerHTML = response;
+    }
+  };
+}
