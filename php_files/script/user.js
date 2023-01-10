@@ -1,3 +1,21 @@
+function checkLoginStatus() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/signIn/user_process/session/getReaderID.php");
+
+  //parameter is empty because there is no form
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      if (response == "not logged in") {
+        loadUserLoginForm();
+      } else if (response == "logged in") {
+        location.replace("/signIn/userPage.php");
+      }
+    }
+  };
+}
 function loadUserLoginForm() {
   let input_ID = createInput("ID", "text", "Reader_ID");
   let input_pwd = createInput("Password", "password", "Password");
@@ -23,7 +41,7 @@ function getNextReaderID() {
       let response = this.responseText;
       console.log("nextid: " + response);
       let input_id = document.getElementById("Reader_ID");
-      input_id.setAttribute("value",response);
+      input_id.setAttribute("value", response);
     }
   };
 }
@@ -121,7 +139,47 @@ function loadSearchForm() {
 
 function initialize() {
   setDefaultSession("set");
+  displayReaderName();
 }
+
+function displayReaderName() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/signIn/user_process/getReaderName.php");
+
+  //parameter is empty because there is no form
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      if (response != "User not found") {
+        document.getElementById("username").innerHTML = response;
+      } else {
+        alert("user unfound")
+      }
+    }
+  };
+}
+
+function logout() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/signIn/user_process/session/resetReaderID.php");
+
+  //parameter is empty because there is no form
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      if (response == "reset succeed") {
+        location.replace("/signIn/userSignIn.php");
+      } else {
+        alert("logout failed");
+      }
+    }
+  };
+}
+
 let sessionSet;
 
 function setDefaultSession(action) {

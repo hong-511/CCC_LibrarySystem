@@ -6,7 +6,7 @@
 
 	</head>
 	
-	<body onload="loadUserLoginForm()">
+	<body onload="checkLoginStatus()">
         <div id="navbar"></div>
         <div class="container">
             <div class="row mb-5 mt-3">

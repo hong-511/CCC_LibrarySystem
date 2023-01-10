@@ -66,6 +66,7 @@
     $page = $_SESSION['pageNumber'];
     echo "<div id='pagination'></div>";
     //echo"Now Page : $page<br/>";
+    //TODO set highest page number if session-highest page number is not set
     $offset = ($page-1)*20;         
     if($result != NULL){
         if($offset > count($result)){
