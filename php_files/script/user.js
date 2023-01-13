@@ -418,6 +418,7 @@ function returnBooks() {
 }
 
 function displayActivityHistory() {
+  document.getElementById("formBlock").innerHTML = "";
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/signIn/user_process/history.php");
 
