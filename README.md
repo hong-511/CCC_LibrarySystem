@@ -13,3 +13,13 @@ You should see the main page of the system
 3. upload the sql file (located under database folder) into final_project database in phpmyadmin
 4. Under final_project database, in administer relation, set your own Administer_ID and Password
 7. go back to [adminpage](http://localhost/admin/adminSignIn.php) to test if the administer login works
+
+# System functionalities
+This system provides basic functionalities for a library system.
+There are three identities with different functionalities described as follows
+## Passerby
+Passersby can register to become a reader(the password will be hashed, however it is undone)
+## Reader
+After login with ID and password, readers can search for books, return borrowed books and view their borrow/return history
+## Administrator
+After login with ID and password(notice: you can't login with reader ID and password), administrators can add book to database, delete books and edit books information
