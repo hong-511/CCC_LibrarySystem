@@ -29,3 +29,8 @@ After login with ID and password(notice: you can't login with reader ID and pass
 
 ## Database source
 Our database is originated from https://www.kaggle.com/code/ivannatarov/amazon-s-books-eda-plotly-hypothesis-test/data - bestsellers with categories.csv
+
+## Contributors
+<a href="https://github.com/Argentum11/CCC_LibrarySystem/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Argentum11/CCC_LibrarySystem" />
+</a>
