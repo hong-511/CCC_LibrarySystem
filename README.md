@@ -14,12 +14,18 @@ You should see the main page of the system
 4. Under final_project database, in administer relation, set your own Administer_ID and Password
 7. go back to [adminpage](http://localhost/admin/adminSignIn.php) to test if the administer login works
 
-# System functionalities
+## System functionalities
 This system provides basic functionalities for a library system.
 There are three identities with different functionalities described as follows
-## Passerby
+### Passerby
 Passersby can register to become a reader(the password will be hashed, however it is undone)
-## Reader
+### Reader
 After login with ID and password, readers can search for books, return borrowed books and view their borrow/return history
-## Administrator
+### Administrator
 After login with ID and password(notice: you can't login with reader ID and password), administrators can add book to database, delete books and edit books information
+
+## E-R Diagram
+![image](https://user-images.githubusercontent.com/92793837/212813619-cb984134-dc2c-4edd-aaab-806fc92d7a26.png)
+
+## Database source
+Our database is originated from https://www.kaggle.com/code/ivannatarov/amazon-s-books-eda-plotly-hypothesis-test/data - bestsellers with categories.csv
