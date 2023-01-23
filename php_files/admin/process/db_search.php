@@ -18,7 +18,7 @@
             $part1 = "";
         $part1 = $part1." Book_ID=? ";
         $array[$count++] = $Book_ID;
-        
+
     }
     else{
         $part1 = "";
@@ -131,6 +131,6 @@
         else
             echo"NO result<br/>";
     }
-    
+
     echo"<br/><input type = 'button' onclick='history.back()' value = 'Go Back'></input>";
 ?>

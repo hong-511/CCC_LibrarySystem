@@ -3,59 +3,63 @@
     //echo "Hi! This is db_search.php file.<br/> ";
     include_once "../../db_connect.php";//設定想要新增入資料庫的資料內容如下
 	
-    $type = 0;
     $Book_ID = $_POST["Book_ID"];
     $BookName = $_POST["BookName"];
     $Author = $_POST["Author"];
-    if($Book_ID != NULL)  
-        $type = $type + 1;  
-    if($BookName != NULL)
-        $type = $type + 2;
-    if($Author != NULL)      
-        $type = $type + 4;
-    switch($type){
-        case 0:
-            echo("error<br/>");
-            $stmt = NULL;
-            break;
-        case 1:
-            $query = ("select * from book where Book_ID=?");
-            $stmt= $db->prepare($query);//執行SQL語法
-	        $stmt->execute(array($Book_ID));
-            break;
-        case 2:
-            $query = ("select * from book where BookName = ?");
-            $stmt= $db->prepare($query);//執行SQL語法
-	        $stmt->execute(array($BookName));
-            break;
-        case 3:
-            $query = ("select * from book where Book_ID=? and BookName=?");
-            $stmt= $db->prepare($query);//執行SQL語法
-	        $stmt->execute(array($Book_ID,$BookName));
-            break;
-        case 4:
-            $query = ("select * from book where Author=?");
-            $stmt= $db->prepare($query);//執行SQL語法
-	        $stmt->execute(array($Author));
-            break;
-        case 5:
-            $query = ("select * from book where Book_ID=? and Author=?");
-            $stmt= $db->prepare($query);//執行SQL語法
-	        $stmt->execute(array($Book_ID,$Author));
-            break;
-        case 6:
-            $query = ("select * from book where BookName=? and Author=?");
-            $stmt= $db->prepare($query);//執行SQL語法
-	        $stmt->execute(array($BookName,$Author));
-            break;
-        case 7:
-            $query = ("select * from book where Book_ID=? and BookName=? and Author=?");
-            $stmt= $db->prepare($query);//執行SQL語法
-	        $stmt->execute(array($Book_ID,$BookName,$Author));
-            break;
+    $count = 0;
+    $array = [];
+    if($Book_ID != NULL){
+        if($count != 0)
+            $part1 = " and ";
+        else
+            $part1 = "";
+        $part1 = $part1." Book_ID=? ";
+        $array[$count++] = $Book_ID;
+
     }
+    else{
+        $part1 = "";
+    }
+    if($BookName != NULL){
+        if($count != 0)
+            $part2 = " and ";
+        else
+            $part2 = "";
+        $part2 = $part2." BookName like ? ";
+        $array[$count++] = "%".$BookName."%";
+    }
+    else{
+        $part2 = "";
+    }
+    if($Author != NULL){
+        if($count != 0)
+            $part3 = " and ";
+        else
+            $part3 = "";
+        $part3 = $part3." Author like ? ";
+        $array[$count++] = "%".$Author."%";
+    }
+    else{
+        $part3 = "";
+    }
+
+    if($count == 0){
+        echo"NO conditions!!!<br/>";
+    }
+    else{
+        $query = ("select * from book where ".$part1.$part2.$part3);
+        //echo $query."<br/> ";
+        $stmt= $db->prepare($query);//執行SQL語法
+        if($count == 1){
+            $stmt->execute(array($array[0]));
+        }
+        else if($count == 2){
+            $stmt->execute(array($array[0], $array[1]));
+        }
+        else if($count == 3){
+            $stmt->execute(array($array[0], $array[1], $array[2]));
+        }
         
-    if($stmt != NULL){
         $result = $stmt->fetchAll();
         if($result != NULL){
             echo"<table border='1'>
@@ -76,14 +80,11 @@
                 echo"<td>".$result[$i]['Year']."</td>";
                 echo"</tr>";
             }
+            echo"</table>";
         }
-    }    
-    else
-        $result = NULL;
-    
-    if($result == NULL)
-        echo"NO result<br/>";
-    else
-        echo"</table>";
+        else
+            echo"NO result<br/>";
+    }
+
     echo"<br/><input type = 'button' onclick='history.back()' value = 'Go Back'></input>";
 ?>

@@ -21,7 +21,7 @@
             <label><font size="3"> <strong>BookName :</strong> </font></label>
             <input type="text" name="BookName"><br/>
         </div><br/>
-
+        
         <div>
             <label><font size="3"> <strong>Author :</strong> </font></label>
             <input type="text" name="Author"><br/>
@@ -34,7 +34,7 @@
                 <option value = "issued">issued</option>
             </select>
         </div><br/>
-        
+
         <div>
             <label><font size="3"> <strong>Year :</strong> </font></label>
             <select name="Year">
@@ -70,7 +70,6 @@
             <label><font size="3"> <strong>BookName :</strong> </font></label>
             <input type="text" name="BookName"><br/>
         </div><br/>
-
         <div>
             <label><font size="3"> <strong>Author :</strong> </font></label>
             <input type="text" name="Author"><br/>
@@ -92,7 +91,6 @@
                 ?>
             </select>
         </div><br/>
-
         <div>
             <label><font size="3"> <strong>Price :</strong> </font></label>
             <input type="text" name="Price"><br/>
@@ -118,7 +116,6 @@
             <label><font size="3"> <strong>BookName :</strong> </font></label>
             <input type="text" name="BookName"><br/>
         </div><br/>
-
         <div>
             <label><font size="3"> <strong>Author :</strong> </font></label>
             <input type="text" name="Author"><br/>
@@ -140,7 +137,6 @@
                 ?>
             </select>
         </div><br/>
-
         <div>
             <label><font size="3"> <strong>Price :</strong> </font></label>
             <input type="text" name="Price"><br/>
@@ -224,7 +220,7 @@
             echo"<td>".$result[$i+($page-1)*20]['Status']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Year']."</td>";
             echo"<td>".$result[$i+($page-1)*20]['Price']."</td>";
-            echo"</tr>";
+            echo"</tr>.";
         }
     ?>
 	</body>	
