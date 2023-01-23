@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-01-03 11:21:08
--- 伺服器版本： 10.4.27-MariaDB
--- PHP 版本： 8.1.12
+-- 產生時間： 2023-01-05 09:15:05
+-- 伺服器版本： 10.4.25-MariaDB
+-- PHP 版本： 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `administer` (
   `Password` varchar(8) DEFAULT NULL,
   `email` varchar(12) DEFAULT NULL,
   `phone` varchar(13) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `administer`
@@ -57,7 +57,7 @@ CREATE TABLE `book` (
   `Status` varchar(9) DEFAULT NULL,
   `Year` varchar(10) DEFAULT NULL,
   `Price` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `book`
@@ -66,12 +66,12 @@ CREATE TABLE `book` (
 INSERT INTO `book` (`Book_ID`, `BookName`, `Author`, `Status`, `Year`, `Price`) VALUES
 ('1', '10-Day Green Smoothie Cleanse', 'JJ Smith', 'issued', '2016', '8'),
 ('10', 'A Man Called Ove: A Novel', 'Fredrik Backman', 'issued', '2016', '8'),
-('100', 'Enchanted Forest: An Inky Quest and Coloring book (Activity Books, Mindfulness and Meditation)', 'Johanna Basford', 'available', '2015', '9'),
-('101', 'Fahrenheit 451', 'Ray Bradbury', 'available', '2016', '8'),
+('100', 'Enchanted Forest: An Inky Quest and Coloring book (Activity Books, Mindfulness and Meditation)', 'Johanna Basford', 'issued', '2015', '9'),
+('101', 'Fahrenheit 451', 'Ray Bradbury', 'issued', '2016', '8'),
 ('102', 'Fahrenheit 451', 'Ray Bradbury', 'available', '2018', '8'),
 ('103', 'Fantastic Beasts and Where to Find Them: The Original Screenplay (Harry Potter)', 'J.K. Rowling', 'issued', '2016', '15'),
 ('104', 'Fear: Trump in the White House', 'Bob Woodward', 'available', '2018', '2'),
-('105', 'Fifty Shades Darker', 'E L James', 'available', '2012', '7'),
+('105', 'Fifty Shades Darker', 'E L James', 'issued', '2012', '7'),
 ('106', 'Fifty Shades Freed: Book Three of the Fifty Shades Trilogy (Fifty Shades of Grey Series) (English Edition)', 'E L James', 'available', '2012', '11'),
 ('107', 'Fifty Shades of Grey: Book One of the Fifty Shades Trilogy (Fifty Shades of Grey Series)', 'E L James', 'issued', '2012', '14'),
 ('108', 'Fifty Shades of Grey: Book One of the Fifty Shades Trilogy (Fifty Shades of Grey Series)', 'E L James', 'available', '2013', '14'),
@@ -83,7 +83,7 @@ INSERT INTO `book` (`Book_ID`, `BookName`, `Author`, `Status`, `Year`, `Price`) 
 ('113', 'First 100 Words', 'Roger Priddy', 'available', '2016', '4'),
 ('114', 'First 100 Words', 'Roger Priddy', 'issued', '2017', '4'),
 ('115', 'First 100 Words', 'Roger Priddy', 'issued', '2018', '4'),
-('116', 'Food Rules: An Eater\'s Manual', 'Michael Pollan', 'available', '2010', '9'),
+('116', 'Food Rules: An Eater\'s Manual', 'Michael Pollan', 'issued', '2010', '9'),
 ('117', 'Frozen (Little Golden Book)', 'RH Disney', 'available', '2014', '0'),
 ('118', 'Game Change: Obama and the Clintons, McCain and Palin, and the Race of a Lifetime', 'John Heilemann', 'available', '2010', '9'),
 ('119', 'Game of Thrones Boxed Set: A Game of Thrones/A Clash of Kings/A Storm of Swords/A Feast for Crows', 'George R.R. Martin', 'available', '2011', '5'),
@@ -614,19 +614,8 @@ INSERT INTO `book` (`Book_ID`, `BookName`, `Author`, `Status`, `Year`, `Price`) 
 ('96', 'Eclipse (Twilight Sagas)', 'Stephenie Meyer', 'available', '2009', '7'),
 ('97', 'Eclipse (Twilight)', 'Stephenie Meyer', 'available', '2009', '18'),
 ('98', 'Educated: A Memoir', 'Tara Westover', 'available', '2018', '15'),
-('99', 'Educated: A Memoir', 'Tara Westover', 'available', '2019', '15');
-
---
--- 觸發器 `book`
---
-DELIMITER $$
-CREATE TRIGGER `UpdateBook` AFTER UPDATE ON `book` FOR EACH ROW BEGIN 
-UPDATE final_project.book
-SET final_project.book.Price = OLD.book.Price
-where new.book.Price < 1;
-END
-$$
-DELIMITER ;
+('99', 'Educated: A Memoir', 'Tara Westover', 'available', '2019', '15'),
+('999', '234234', '234234', 'available', '2022', '8');
 
 -- --------------------------------------------------------
 
@@ -641,7 +630,7 @@ CREATE TABLE `process` (
   `Administer_ID` varchar(100) NOT NULL,
   `Date` varchar(10) DEFAULT NULL,
   `Type` varchar(9) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `process`
@@ -649,6 +638,16 @@ CREATE TABLE `process` (
 
 INSERT INTO `process` (`Process_ID`, `Reader_ID`, `Book_ID`, `Administer_ID`, `Date`, `Type`) VALUES
 ('1', '2', '100', '1', '2022/9/30', 'borrow'),
+('10', '1', '100', '1', '2023/01/04', 'borrow'),
+('11', '1', '100', '1', '2023/01/04', 'return'),
+('12', '1', '100', '1', '2023/01/04', 'borrow'),
+('13', '1', '105', '1', '2023/01/04', 'borrow'),
+('14', '1', '101', '1', '2023/01/05', 'borrow'),
+('15', '1', '102', '1', '2023/01/05', 'borrow'),
+('16', '1', '102', '1', '2023/01/05', 'return'),
+('17', '1', '116', '2', '2023/01/05', 'borrow'),
+('18', '1', '113', '2', '2023/01/05', 'borrow'),
+('19', '1', '113', '2', '2023/01/05', 'return'),
 ('2', '2', '200', '1', '2022/10/1', 'borrow'),
 ('3', '3', '300', '1', '2022/10/3', 'borrow'),
 ('4', '1', '550', '2', '2022/10/4', 'borrow'),
@@ -657,6 +656,14 @@ INSERT INTO `process` (`Process_ID`, `Reader_ID`, `Book_ID`, `Administer_ID`, `D
 ('7', '1', '101', '1', '2023/01/03', 'borrow'),
 ('8', '1', '101', '1', '2023/01/03', 'return'),
 ('9', '1', '550', '1', '2023/01/03', 'return');
+
+--
+-- 觸發器 `process`
+--
+DELIMITER $$
+CREATE TRIGGER `trigger` BEFORE INSERT ON `process` FOR EACH ROW SET new.Administer_ID = 2
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -670,7 +677,7 @@ CREATE TABLE `reader` (
   `Password` varchar(8) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 傾印資料表的資料 `reader`
@@ -678,11 +685,15 @@ CREATE TABLE `reader` (
 
 INSERT INTO `reader` (`Reader_ID`, `Name`, `Password`, `email`, `phone`) VALUES
 ('1', 'TY', '1234', 'TY@mail.com', '0987654321'),
+('10', '234', 'rty', '324234@tert', '345'),
 ('2', 'Horford', '2330', 'Horford@mail.com', '0911111111'),
 ('3', 'IronMan', '3000', 'IronMan@mail.com', '095555555'),
 ('4', 'Leonard', '4321', 'Leonard@mail.com', '092222222'),
 ('5', 'Jessy', '5678', 'Jessy@mail.com', '093333333'),
-('6', 'Sherry', '8765', 'Sherry@mail.com', '094444444');
+('6', 'Sherry', '8765', 'Sherry@mail.com', '094444444'),
+('7', 'leo', 'tyu', '1@g.com', '09'),
+('8', 'wer', 'rrr', 'wer@weoiru', '0984'),
+('9', 'werwer', 'qaz', '2l34i@wheriu', '4656');
 
 -- --------------------------------------------------------
 
