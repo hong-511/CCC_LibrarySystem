@@ -21,21 +21,21 @@
                 <div class="col-1"></div>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-success" for="btnradio1" onclick ="loadCRUDForm('search')">Search books</label>
+                    <label class="btn btn-outline-success" for="btnradio1" onclick ="loadSearchForm()">Search books</label>
 
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                    <label class="btn btn-outline-success" for="btnradio2" onclick ="loadCRUDForm('insert')">Insert books</label>
+                    <label class="btn btn-outline-success" for="btnradio2" onclick ="loadInsertForm()">Insert books</label>
 
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                    <label class="btn btn-outline-success" for="btnradio3" onclick ="loadCRUDForm('update')">Update book data</label>
+                    <label class="btn btn-outline-success" for="btnradio3" onclick ="loadUpdateForm()">Update book data</label>
 
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                    <label class="btn btn-outline-success" for="btnradio4" onclick ="loadCRUDForm('delete')">Delete books</label>
+                    <label class="btn btn-outline-success" for="btnradio4" onclick ="loadDeleteForm()">Delete books</label>
                 </div>
                 <div class="col-1"></div>
             </div>
             <div id="formBlock"></div>
-            <div id='result'></div>
+            <div id="result"></div>
         </div>
 
         <script src="/script/nav.js"></script>

@@ -265,6 +265,7 @@ function setSearchMode(status) {
     setInputSession();
   }
 }
+
 // search with the data stored in session
 function searchBook() {
   var xhr = new XMLHttpRequest();
