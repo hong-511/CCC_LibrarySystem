@@ -4,10 +4,14 @@
 
     $borrowIDlist = $_POST["borrowIDlist"];
     /****update book status****/
-    $query = ("update book set Status = 'issued' where Book_ID= ?");
-    $stmt= $db->prepare($query);//執行SQL語法
-    foreach($borrowIDlist as $Book_ID){
-        $result = $stmt->execute(array($Book_ID));
+    try {
+        $query = ("update book set Status = 'issued' where Book_ID= ?");
+        $stmt= $db->prepare($query);//執行SQL語法
+        foreach($borrowIDlist as $Book_ID){
+            $result = $stmt->execute(array($Book_ID));
+        }
+    } catch(PDOException $e){
+        echo $e->getMessage();
     }
 
     //how many data in process

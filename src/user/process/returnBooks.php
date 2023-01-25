@@ -4,12 +4,18 @@
 
     /****return button was pressed****/
     $returnIDlist = $_POST["returnIDlist"];
-    /****update book status****/
-    $query = ("update book set Status = 'available' where Book_ID= ?");
-    $stmt= $db->prepare($query);//執行SQL語法
-    foreach($returnIDlist as $Book_ID){
-        $result = $stmt->execute(array($Book_ID));
+
+    try {
+        /****update book status****/
+        $query = ("update book set Status = 'available' where Book_ID= ?");
+        $stmt= $db->prepare($query);//執行SQL語法
+        foreach($returnIDlist as $Book_ID){
+            $result = $stmt->execute(array($Book_ID));
+        }
+    } catch(PDOException $e){
+        echo $e->getMessage();
     }
+
     /****insert return information into process table****/
     $query = ("select count(*) as number from process");//how many data in process
     $stmt= $db->prepare($query);//執行SQL語法

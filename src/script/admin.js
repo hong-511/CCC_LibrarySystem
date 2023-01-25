@@ -194,7 +194,6 @@ function updateBook() {
       let response = this.responseText;
       alert(response);
       if (response == "update succeed") {
-        //TODO check update is split
         form.reset();
       }
     }

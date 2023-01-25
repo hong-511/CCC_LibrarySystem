@@ -79,15 +79,17 @@
     else{
         $part6 = "";
     }
-    //echo "count is ".$count."<br/> ";
-    if($count == 0){
-        echo"NO conditions!!!<br/>";
-    }
-    else{
-        $query = ("select * from book where ".$part1.$part2.$part3.$part4.$part5.$part6);
-        //echo $query."<br/> ";
-        $stmt= $db->prepare($query);//執行SQL語法
-        try {
+    try {
+        if($count == 0){
+            $query = ("select * from book ");
+            $stmt= $db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+        }
+        else{
+            $query = ("select * from book where ".$part1.$part2.$part3.$part4.$part5.$part6);
+            $stmt= $db->prepare($query);
+        
             if($count == 1){
                 $stmt->execute(array($array[0]));
             }
@@ -106,12 +108,9 @@
             else if($count == 6){
                 $stmt->execute(array($array[0], $array[1], $array[2], $array[3], $array[4], $array[5]));
             }
-        } catch(PDOException $e){
-            echo $e->getMessage();
+            $result = $stmt->fetchAll();
         }
-        $result = $stmt->fetchAll();
         //TODO set highest page number if session-highest page number is not set
-        
         if($result != NULL){
             $page = $_SESSION['pageNumber'];
             echo "<div id='pagination'></div>";
@@ -139,7 +138,10 @@
             }
             echo"</table>";
         }
-        else
+        else{
             echo"No result";
+        }
+    } catch(PDOException $e){
+        echo $e->getMessage();
     }
 ?>

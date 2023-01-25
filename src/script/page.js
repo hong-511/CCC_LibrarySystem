@@ -21,7 +21,7 @@ function setBlock() {
 
 function displayPageNumber() {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/user/process/session/pageNumber.php");
+  xhr.open("POST", "/sharedProcess/session/pageNumber.php");
 
   //parameter is empty because there is no form
   xhr.send();
@@ -36,7 +36,7 @@ function displayPageNumber() {
 
 function nextPage() {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/user/process/session/nextPage.php");
+  xhr.open("POST", "/sharedProcess/session/nextPage.php");
 
   //parameter is empty because there is no form
   xhr.send();
@@ -53,7 +53,7 @@ function nextPage() {
 
 function previousPage() {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/user/process/session/previousPage.php");
+  xhr.open("POST", "/sharedProcess/session/previousPage.php");
 
   //parameter is empty because there is no form
   xhr.send();
