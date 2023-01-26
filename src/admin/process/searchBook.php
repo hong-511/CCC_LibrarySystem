@@ -147,7 +147,7 @@
             echo"</table>";
         }
         else{
-            echo"No result, count=".$count;
+            echo"No result";
         }
     } catch(PDOException $e){
         echo $e->getMessage();
