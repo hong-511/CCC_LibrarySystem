@@ -1,6 +1,13 @@
 <?php
     session_start();
     $currentPage = $_SESSION['pageNumber'];
-    $_SESSION['pageNumber'] = $currentPage + 1;
-    echo "next Page success";
+    $newPage = $currentPage + 1;
+    $maxPageNumber = $_SESSION['maxPageNumber'];
+    if($newPage <= $maxPageNumber){
+        $_SESSION['pageNumber'] = $newPage;
+        echo "next Page success";
+    }
+    else{
+        echo "This is the end of the search result"; 
+    }
 ?>

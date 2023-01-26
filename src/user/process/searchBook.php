@@ -65,8 +65,16 @@
         }
         $page = $_SESSION['pageNumber'];
         echo "<div id='pagination'></div>";
-        //echo"Now Page : $page<br/>";
         //TODO set highest page number if session-highest page number is not set
+        if(!isset($_SESSION['maxPageNumber'])){
+            for($i=0; $i < count($result); $i++){
+                $tempPageOffset = ($i-1)*20;
+                if($tempPageOffset > count($result)){
+                    $_SESSION['maxPageNumber'] = $i - 1;
+                    break;
+                }
+            }
+        }
         $offset = ($page-1)*20;         
         if($result != NULL){
             if($offset > count($result)){
@@ -81,7 +89,7 @@
                     <th>Author</th>
                     <th>Status</th>
                 </tr>";
-                for($i=0; $i<20 && $i+$offset <count($result); $i++){
+                for($i=0; $i<20 && $i+$offset < count($result); $i++){
                     echo"<tr>";
                     if($result[$i+$offset]['Status'] == 'available')
                         echo"<td><input type = 'checkbox' name='borrowIDlist[]' value = ".$result[$i+($page-1)*20]['Book_ID']."></td>"; 

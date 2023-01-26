@@ -44,8 +44,12 @@ function nextPage() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
-      if (response == "next Page success") {
+      
+      if(response == "next Page success") {
         searchBook();
+      }
+      else{
+        triggerModal("Warning", response);
       }
     }
   };
