@@ -21,7 +21,7 @@ function setBlock() {
 
 function displayPageNumber() {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/user/process/session/pageNumber.php");
+  xhr.open("POST", "/sharedProcess/session/pageNumber.php");
 
   //parameter is empty because there is no form
   xhr.send();
@@ -36,7 +36,7 @@ function displayPageNumber() {
 
 function nextPage() {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/user/process/session/nextPage.php");
+  xhr.open("POST", "/sharedProcess/session/nextPage.php");
 
   //parameter is empty because there is no form
   xhr.send();
@@ -44,8 +44,12 @@ function nextPage() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
-      if (response == "next Page success") {
+      
+      if(response == "next Page success") {
         searchBook();
+      }
+      else{
+        triggerModal("Warning", response);
       }
     }
   };
@@ -53,7 +57,7 @@ function nextPage() {
 
 function previousPage() {
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/user/process/session/previousPage.php");
+  xhr.open("POST", "/sharedProcess/session/previousPage.php");
 
   //parameter is empty because there is no form
   xhr.send();
@@ -63,6 +67,23 @@ function previousPage() {
       let response = this.responseText;
       if (response == "previous Page success") {
         searchBook();
+      }
+    }
+  };
+}
+
+function setPageNumberTo1() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/sharedProcess/session/resetPageNumber.php");
+
+  //send the form data
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      if (response != "page number set") {
+        triggerModal("Error", response);
       }
     }
   };

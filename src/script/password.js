@@ -42,9 +42,14 @@ function editPwd() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
-      alert(response);
       if(response == "edit succeed"){
+        //remain this alert() so that user will know the edit was successful before moving to loginPage
+        //using triggerModal does not stop the process of location.replace 
+        alert(response);
         location.replace("/user/loginPage.php");
+      }
+      else{
+        triggerModal("Error", response);
       }
     }
   };

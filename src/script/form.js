@@ -123,7 +123,7 @@ function create_Status_Dropdown() {
 }
 function create_Year_Dropdown(startYear, endYear) {
   let yearOptions = "";
-  for (i = startYear; i < endYear; i++) {
+  for (i = startYear; i <= endYear; i++) {
     yearOptions += "<option value = " + i + ">" + i + "</option>";
   }
   let year_Dropdown =

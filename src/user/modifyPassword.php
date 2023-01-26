@@ -35,6 +35,9 @@
             $result = $stmt->execute(array($Password, $Reader_ID, $Name));
             echo "edit succeed";
         }
+        else{
+            echo "Can't find this user, please check ID and Name and try again,";
+        }
     }
        
 ?>
