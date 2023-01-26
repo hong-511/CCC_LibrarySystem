@@ -12,7 +12,7 @@ function setPageNumberTo1() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
       if (response != "page number set") {
-        alert(response);
+        triggerModal("Error",response)
       }
     }
   };
@@ -82,7 +82,7 @@ function searchBook() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
       if (response == "No result") {
-        alert(response);
+        triggerModal("Server respond", response);
       } else {
         document.getElementById("result").innerHTML = centerForm(response);
         paging();
@@ -138,9 +138,12 @@ function insertNewBook() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
-      alert(response);
       if (response == "insert succeed") {
+        triggerModal("Succeed", response);
         form.reset();
+      }
+      else{
+        triggerModal("Error", response);
       }
     }
   };
@@ -192,9 +195,12 @@ function updateBook() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
-      alert(response);
       if (response == "update succeed") {
+        triggerModal("Succeed", response);
         form.reset();
+      }
+      else{
+        triggerModal("Error", response);
       }
     }
   };
@@ -232,10 +238,13 @@ function deleteBook() {
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
-      let response = this.responseText;
-      alert(response);
+      let response = this.responseText;    
       if (response == "delete succeed") {
+        triggerModal("Succeed", response);
         form.reset();
+      }
+      else{
+        triggerModal("Error", response);
       }
     }
   };
@@ -261,7 +270,7 @@ function login() {
         form.reset();
         location.replace("/admin/mainPage.php");
       } else {
-        alert(response);
+        triggerModal("Error", response);
       }
     }
   };

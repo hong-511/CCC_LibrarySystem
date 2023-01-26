@@ -51,9 +51,8 @@ function login() {
       if (response == "login succeed") {
         form.reset();
         location.replace("/user/userPage.php");
-      }
-      else{
-        alert(response);
+      } else {
+        triggerModal("Error", response);
       }
     }
   };
@@ -122,10 +121,13 @@ function registerUser() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
-      alert(response);
       if (response == "Register succeed") {
+        //remain this alert() to inform register succeed before moving to login page
+        alert(response);
         form.reset();
         location.replace("/user/loginPage.php");
+      } else {
+        triggerModal("Error", response);
       }
     }
   };
@@ -178,7 +180,7 @@ function displayReaderName() {
       if (response != "User not found") {
         document.getElementById("username").innerHTML = response;
       } else {
-        alert("user unfound");
+        triggerModal("Error", "user unfound");
       }
     }
   };
@@ -197,7 +199,7 @@ function logout() {
       if (response == "reset succeed") {
         location.replace("/user/loginPage.php");
       } else {
-        alert("logout failed");
+        triggerModal("Error", "logout failed");
       }
     }
   };
@@ -304,8 +306,11 @@ function borrowBook() {
       form.reset();
       let response = this.responseText;
       if (response == "Borrowing is successful") {
-        alert("borrow success");
+        triggerModal("Succeed", "borrow success");
         searchBook();
+      }
+      else{
+        triggerModal("Error", response)
       }
     }
   };
@@ -347,8 +352,11 @@ function returnBooks() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       let response = this.responseText;
       if (response == "Returning is successful") {
-        alert("returning succeed");
+        triggerModal("Succeed", "returning succeed");
         displayBorrowedBooks();
+      }
+      else{
+        triggerModal("Error", response);
       }
     }
   };
