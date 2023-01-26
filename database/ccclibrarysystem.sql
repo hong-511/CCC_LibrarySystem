@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-01-05 09:15:05
+-- 產生時間： 2023-01-26 07:57:12
 -- 伺服器版本： 10.4.25-MariaDB
 -- PHP 版本： 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `final_project`
+-- 資料庫： `ccclibrarysystem`
 --
 
 -- --------------------------------------------------------
@@ -674,7 +674,7 @@ DELIMITER ;
 CREATE TABLE `reader` (
   `Reader_ID` varchar(9) NOT NULL,
   `Name` varchar(7) DEFAULT NULL,
-  `Password` varchar(8) DEFAULT NULL,
+  `Password` varchar(256) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -684,16 +684,9 @@ CREATE TABLE `reader` (
 --
 
 INSERT INTO `reader` (`Reader_ID`, `Name`, `Password`, `email`, `phone`) VALUES
-('1', 'TY', '1234', 'TY@mail.com', '0987654321'),
-('10', '234', 'rty', '324234@tert', '345'),
-('2', 'Horford', '2330', 'Horford@mail.com', '0911111111'),
-('3', 'IronMan', '3000', 'IronMan@mail.com', '095555555'),
-('4', 'Leonard', '4321', 'Leonard@mail.com', '092222222'),
-('5', 'Jessy', '5678', 'Jessy@mail.com', '093333333'),
-('6', 'Sherry', '8765', 'Sherry@mail.com', '094444444'),
-('7', 'leo', 'tyu', '1@g.com', '09'),
-('8', 'wer', 'rrr', 'wer@weoiru', '0984'),
-('9', 'werwer', 'qaz', '2l34i@wheriu', '4656');
+('1', 'TY', '$2y$10$7uEBPjxskSLpdUspGjAvpeVmQHZVgfzo0JIluGfRE2x504Qmezb8K', 'TY@mail.com', '0987654321'),
+('2', 'Horford', '$2y$10$NVgRERMoRJaMlGC0QiSuAuChzgwVZTl1OHnnadH2v57/VS./VnnTm', 'Horford@mail.com', '0911111111'),
+('3', 'IronMan', '$2y$10$HW9AIPPZ5x3megTymmZp2.HH5KvnpNIac2gd47R2DUUxjf05DHYR2', 'IronMan@mail.com', '095555555');
 
 -- --------------------------------------------------------
 
@@ -704,7 +697,7 @@ INSERT INTO `reader` (`Reader_ID`, `Name`, `Password`, `email`, `phone`) VALUES
 CREATE TABLE `record` (
 `Reader_ID` varchar(9)
 ,`Name` varchar(7)
-,`Password` varchar(8)
+,`Password` varchar(256)
 ,`email` varchar(100)
 ,`phone` varchar(15)
 ,`Process_ID` varchar(10)
