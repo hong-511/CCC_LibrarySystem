@@ -65,16 +65,16 @@
         }
         $page = $_SESSION['pageNumber'];
         echo "<div id='pagination'></div>";
-        //TODO set highest page number if session-highest page number is not set
-        if(!isset($_SESSION['maxPageNumber'])){
-            for($i=0; $i < count($result); $i++){
-                $tempPageOffset = ($i-1)*20;
-                if($tempPageOffset > count($result)){
-                    $_SESSION['maxPageNumber'] = $i - 1;
-                    break;
-                }
+
+        //set highest page number
+        for($i=0; $i < count($result); $i++){
+            $tempPageOffset = ($i-1)*20;
+            if($tempPageOffset > count($result)){
+                $_SESSION['maxPageNumber'] = $i - 1;
+                break;
             }
         }
+
         $offset = ($page-1)*20;         
         if($result != NULL){
             if($offset > count($result)){

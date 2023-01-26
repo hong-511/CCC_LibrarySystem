@@ -230,6 +230,7 @@ function setDefaultSession(action) {
 }
 
 function setInputSession() {
+  setPageNumberTo1();
   var form = document.getElementById("search-form");
   var data = new FormData(form);
   if (!form) {

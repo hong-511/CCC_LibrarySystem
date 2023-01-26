@@ -1,22 +1,7 @@
 function adminPageInitialize() {
   setPageNumberTo1();
 }
-function setPageNumberTo1() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/admin/process/session/resetPageNumber.php");
 
-  //send the form data
-  xhr.send();
-
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == XMLHttpRequest.DONE) {
-      let response = this.responseText;
-      if (response != "page number set") {
-        triggerModal("Error",response)
-      }
-    }
-  };
-}
 function loadAdminLoginForm() {
   let formHeadTag = `<form  action=login.php method="post"  id="loginForm">`;
   let input_ID = createInput("ID", "text", "id");
@@ -54,7 +39,7 @@ function loadSearchForm() {
     input_Year +
     input_price;
   let formTailTag = "</form>";
-  let searchBtnHTML = `<button class="btn btn-primary" onclick="searchBook()" >search</button>`;
+  let searchBtnHTML = `<button class="btn btn-primary" onclick="setBookConditionsInSession()" >search</button>`;
   let searchBtn = centerElement(searchBtnHTML);
   let wholeForm = formHeadTag + formContent + formTailTag + searchBtn;
   if (formBlock == null) {
@@ -65,7 +50,8 @@ function loadSearchForm() {
   clearResult();
 }
 
-function searchBook() {
+function setBookConditionsInSession(){
+  setPageNumberTo1();
   var form = document.getElementById("searchForm");
   var data = new FormData(form);
   if (!form) {
@@ -73,10 +59,29 @@ function searchBook() {
   }
 
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/admin/process/searchBook.php");
+  xhr.open("POST", "/admin/process/session/setBookConditions.php");
 
   //send the form data
   xhr.send(data);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      if (response == "Book Conditions set") {
+        searchBook();
+      } else {
+        triggerModal("Error", response);
+      }
+    }
+  };
+}
+
+function searchBook() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/admin/process/searchBook.php");
+
+  //send the form data
+  xhr.send();
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -86,7 +91,6 @@ function searchBook() {
       } else {
         document.getElementById("result").innerHTML = centerForm(response);
         paging();
-        form.reset();
       }
     }
   };

@@ -4,12 +4,12 @@
     //echo "Hi! This is db_search.php file.<br/> ";
     include_once "../../connectDatabase.php";//設定想要新增入資料庫的資料內容如下
 
-    $Book_ID = $_POST["Book_ID"];
-    $BookName = $_POST["BookName"];
-    $Author = $_POST["Author"];
-    $Status = $_POST["Status"];
-    $Year = $_POST["Year"];
-    $Price = $_POST["Price"];
+    $Book_ID = $_SESSION["Book_ID"];
+    $BookName = $_SESSION["BookName"];
+    $Author = $_SESSION["Author"];
+    $Status = $_SESSION["Status"];
+    $Year = $_SESSION["Year"];
+    $Price = $_SESSION["Price"];
     $count = 0;
     $array = [];
     if($Book_ID != NULL){
@@ -114,6 +114,14 @@
         if($result != NULL){
             $page = $_SESSION['pageNumber'];
             echo "<div id='pagination'></div>";
+            //set highest page number
+            for($i=0; $i < count($result); $i++){
+                $tempPageOffset = ($i-1)*20;
+                if($tempPageOffset > count($result)){
+                    $_SESSION['maxPageNumber'] = $i - 1;
+                    break;
+                }
+            }
             $offset = ($page-1)*20;
 
             echo"<table class='table table-striped table-hover'>

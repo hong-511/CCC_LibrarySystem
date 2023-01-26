@@ -71,3 +71,20 @@ function previousPage() {
     }
   };
 }
+
+function setPageNumberTo1() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/sharedProcess/session/resetPageNumber.php");
+
+  //send the form data
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      if (response != "page number set") {
+        triggerModal("Error", response);
+      }
+    }
+  };
+}
