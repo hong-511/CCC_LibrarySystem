@@ -10,13 +10,6 @@
         <div id="navbar"></div>
 	
         <div class="container">
-            <div class="row mb-5 mt-3">
-                <div class="col"></div>
-                <div class="col">
-                    <h1>Admin Page</h1>
-                </div>
-                <div class="col"></div>
-            </div>
             <div class="row mb-3 mt-5">
                 <div class="col-1"></div>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">

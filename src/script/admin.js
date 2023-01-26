@@ -17,11 +17,31 @@ function loadAdminLoginForm() {
     adminLoginFormBlock.innerHTML = wholeForm;
   }
 }
+
 function clearResult() {
   document.getElementById("result").innerHTML = "";
 }
 
+function setConditionsNull(){
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/admin/process/session/setConditionsNull.php");
+
+  xhr.send();
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+      let response = this.responseText;
+      if (response == "Conditions null") {
+        searchBook();
+      } else {
+        triggerModal("Error", response);
+      }
+    }
+  };
+}
+
 function loadSearchForm() {
+  setConditionsNull();
   let formBlock = document.getElementById("formBlock");
   let formHeadTag = `<form id="searchForm">`;
   let input_Book_ID = createInput("Book_ID", "text", "Book_ID");

@@ -13,12 +13,11 @@
             <div class="row mb-5 mt-3">
                 <div class="col"></div>
                 <div class="col">
-                    <h1>User Sign Up</h1>
+                    <h1>User Register</h1>
                 </div>
                 <div class="col"></div>
             </div>
-            <br>
-            <!-- Sign Up -->
+            
             <div id ="registerFormBlock"></div>
             <div id="modalBlock"></div>
         </div>

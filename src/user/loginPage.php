@@ -12,12 +12,11 @@
             <div class="row mb-5 mt-3">
                 <div class="col"></div>
                 <div class="col">
-                    <h1>User Sign In</h1>
+                    <h1>User login</h1>
                 </div>
                 <div class="col"></div>
             </div>
-            <br>
-            <!-- Sign In -->
+            
             <div id="userLoginFormBlock"></div>
 
             <div class="row">

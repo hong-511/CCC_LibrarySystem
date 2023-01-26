@@ -13,7 +13,7 @@
             <div class="row mb-5 mt-3">
                 <div class="col"></div>
                 <div class="col">
-                    <h1>Admin Sign In</h1>
+                    <h1>Admin login</h1>
                 </div>
                 <div class="col"></div>
             </div>
